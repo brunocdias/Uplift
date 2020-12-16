@@ -17,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
+    <ProjectReference Include="..\Uplift.DatAccess\Uplift.DatAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Uplift.DatAccess\Uplift.DatAccess.csproj" />
+    <Folder Include="wwwroot\images\services\" />
   </ItemGroup>
 
 </Project>

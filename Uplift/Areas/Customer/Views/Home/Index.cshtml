@@ -1,8 +1,28 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model Uplift.Models.ViewModels.HomeViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@foreach (var category in Model.CategoryList.OrderBy(o => o.DisplayOrder))
+{
+    if (Model.ServiceList.Where(c => c.CategoryId == category.Id).Count() > 0)
+    {
+        <div class="row container pb-3 backgroundWhite">
+            <div class="col-12">
+                <div class="row">
+                    <h2 class="text-success"><b>@category.Name</b></h2>
+
+                    <div class="col-12">
+                        <div class="row my-3">
+                            @foreach(var service in Model.ServiceList.Where(c => c.CategoryId == category.Id))
+                            {
+                                <div class="col-lg-4 col-xl-3 col-md-6 pb-4">
+                                    <div class="card" style="border:2px solid #43AC6A;border-radius:5px; background:url('images/leaves.png')">
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

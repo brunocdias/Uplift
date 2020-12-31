@@ -16,7 +16,7 @@ namespace Uplift.Models
         public string Name { get; set; }
 
         [Required]
-        public string Price { get; set; }
+        public double Price { get; set; }
 
         [Display(Name = "Description")]
         public string LongDesc { get; set; }

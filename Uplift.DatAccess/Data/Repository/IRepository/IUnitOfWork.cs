@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Uplift.DataAccess.Data.Repository.IRepository;
 
 namespace Uplift.DatAccess.Data.Repository.IRepository
 {
@@ -11,7 +12,7 @@ namespace Uplift.DatAccess.Data.Repository.IRepository
         IServiceRepository Service { get; }
         IOrderHeaderRepository OrderHeader { get; }
         IOrderDetailsRepository OrderDetails { get; }
-
+        IUserRepository User { get; }
 
         void Save();
     }

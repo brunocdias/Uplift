@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Uplift.DatAccess.Data.Repository.IRepository;
+using Uplift.Utility;
 
 namespace Uplift.Areas.Admin.Controllers
 {
-
+    [Authorize(Roles = SD.Admin)]
     [Area("Admin")]
     public class UserController : Controller
     {

@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Uplift.DatAccess.Data.Initializer
 {
-    interface IDbInitializer
+    public interface IDbInitializer
     {
+        void Initialize();
     }
 }

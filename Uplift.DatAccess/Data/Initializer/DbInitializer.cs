@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Uplift.DataAccess.Data;
+using Uplift.Models;
 using Uplift.Utility;
 
 namespace Uplift.DatAccess.Data.Initializer
@@ -41,15 +42,16 @@ namespace Uplift.DatAccess.Data.Initializer
             _roleManager.CreateAsync(new IdentityRole(SD.Admin)).GetAwaiter().GetResult();
             _roleManager.CreateAsync(new IdentityRole(SD.Manager)).GetAwaiter().GetResult();
 
-            _userManager.CreateAsync(new IdentityUser
+            _userManager.CreateAsync(new ApplicationUser
             {
                 UserName = "admin@gmail.com",
                 Email = "admin@gmail.com",
                 EmailConfirmed = true,
+                Name="Bruno Dias"
 
             }, "Admin123*").GetAwaiter().GetResult();
 
-            IdentityUser user = _db.Users.Where(u => u.Email == "admin@gmail.com").FirstOrDefault();
+            ApplicationUser user = _db.ApplicationUser.Where(u => u.Email == "admin@gmail.com").FirstOrDefault();
             _userManager.AddToRoleAsync(user, SD.Admin).GetAwaiter().GetResult();
 
         }

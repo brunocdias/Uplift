@@ -16,6 +16,7 @@ using Uplift.DatAccess.Data.Repository.IRepository;
 using Uplift.DatAccess.Data.Repository;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Uplift.Utility;
+using Uplift.DatAccess.Data.Initializer;
 
 namespace Uplift
 {
@@ -42,6 +43,8 @@ namespace Uplift
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            services.AddScoped<IDbInitializer, DbInitializer>();
+
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -63,7 +66,7 @@ namespace Uplift
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInit)
         {
             if (env.IsDevelopment())
             {
@@ -81,6 +84,7 @@ namespace Uplift
             app.UseSession();
             app.UseRouting();
 
+            dbInit.Initialize();
             app.UseAuthentication();
             app.UseAuthorization();
 
